@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzcge.Mapper.OrderDetailsMapper">
+    <!--public void InsertDetails(OrderDetails orderDetails);-->
+    <insert id="InsertDetails" parameterType="com.lzcge.Entity.OrderDetails">
+        INSERT INTO tb_order_details(order_id,food_id,buy_nums,cost)
+        VALUES (#{orderId},#{foodId},#{buyNums},#{cost});
+    </insert>
+
+    <!--public Double CalCulateAll(Integer orderid);-->
+    <select id="CalCulateAll" resultType="double">
+        SELECT SUM(cost) FROM tb_order_details
+        GROUP BY (order_id)
+        HAVING order_id=#{orderid};
+    </select>
+
+</mapper>

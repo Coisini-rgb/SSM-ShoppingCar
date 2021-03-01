@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzcge.Mapper.OrderMapper">
+    <!--    public void InsertOrder(@Param("orderCode")String OrderCode,@Param("TableId")Integer tableid);
+-->
+    <insert id="InsertOrder">
+        INSERT INTO tb_order(order_code,table_id,order_date)
+        VALUES (#{orderCode},#{TableId},#{orderDate});
+    </insert>
+
+    <!--public void PlaceOrder(@Param("tableid")Integer id,@Param("price")Double price,@Param("payDate")String PayDate,@Param("Disable")Integer disabled);-->
+
+    <update id="PlaceOrder">
+        UPDATE tb_order
+        SET total_price=#{price},pay_date=#{payDate},disabled=#{Disable}
+        WHERE id=#{tableid};
+    </update>
+
+</mapper>
